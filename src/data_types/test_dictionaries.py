@@ -77,3 +77,17 @@ def test_dictionary():
     assert dictionary_for_string_keys['sape'] == 4139
     assert dictionary_for_string_keys['guido'] == 4127
     assert dictionary_for_string_keys['jack'] == 4098
+
+
+def test_dictionary_get(): """retrieves dictionary using get() method"""
+
+student= {
+    'name': 'John Doe',
+    'age': 25
+}
+
+# retrieve an existing value
+assert student.get('name') == 'John Doe'
+
+# return a default value if the key does not exist
+assert student.get('grade', 'Not assigned') == 'Not assigned'
