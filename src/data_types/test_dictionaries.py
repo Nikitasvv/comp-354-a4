@@ -79,15 +79,37 @@ def test_dictionary():
     assert dictionary_for_string_keys['jack'] == 4098
 
 
-def test_dictionary_get(): """retrieves dictionary using get() method"""
+def test_dictionary_get(): 
+    """retrieves dictionary using get() method"""
 
-student= {
-    'name': 'John Doe',
-    'age': 25
-}
+    student = {
+        'name': 'John Doe',
+        'age': 25
+    }   
 
-# retrieve an existing value
-assert student.get('name') == 'John Doe'
+    # retrieve an existing value
+    assert student.get('name') == 'John Doe'
 
-# return a default value if the key does not exist
-assert student.get('grade', 'Not assigned') == 'Not assigned'
+    # return a default value if the key does not exist
+    assert student.get('grade', 'Not assigned') == 'Not assigned'
+
+
+def test_dictionary_update_and_pop_functions():
+    """Update and remove dictionary entries"""
+
+    prices = {
+        'apple': 2,
+        'banana': 1
+    }
+
+    # update existing entries
+    prices.update({'apple': 3, 'banana': 2})
+    
+    assert prices['apple'] == 3
+    assert prices['banana'] == 2
+    
+    # Remove an entry and return its value
+    removed_price = prices.pop('banana')
+    
+    assert removed_price == 2
+    assert 'banana' not in prices
