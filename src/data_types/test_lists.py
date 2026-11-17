@@ -356,3 +356,23 @@ def test_sorting_with_key():
 
     # The original list was not modified.
     assert words == ['banana', 'kiwi', 'apple', 'fig']
+
+def test_list_slicing_with_step():
+    """Slicing lists with a step.
+
+    A slice has the form list[start:stop:step]. The step lets us skip items or go backwards.
+    """
+
+    numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    # Every second item.
+    assert numbers[::2] == [0, 2, 4, 6, 8]
+
+    # Every second item, starting from index 1.
+    assert numbers[1::2] == [1, 3, 5, 7, 9]
+
+    # A start, a stop and a step together.
+    assert numbers[2:8:3] == [2, 5]
+
+    # A negative step reverses the list (returning a new list).
+    assert numbers[::-1] == [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
