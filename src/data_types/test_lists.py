@@ -336,3 +336,23 @@ def test_nested_list_comprehensions():
         (3, 7, 11),
         (4, 8, 12),
     ]
+def test_sorting_with_key():
+    """Sorting lists with sorted() and a key function.
+
+    sorted() returns a new sorted list and leaves the original list unchanged. The key argument
+    lets us choose what to sort by, and reverse=True sorts in descending order.
+    """
+
+    words = ['banana', 'kiwi', 'apple', 'fig']
+
+    # Default sorting is alphabetical.
+    assert sorted(words) == ['apple', 'banana', 'fig', 'kiwi']
+
+    # Sort by word length instead.
+    assert sorted(words, key=len) == ['fig', 'kiwi', 'apple', 'banana']
+
+    # Sort by word length, longest first.
+    assert sorted(words, key=len, reverse=True) == ['banana', 'apple', 'kiwi', 'fig']
+
+    # The original list was not modified.
+    assert words == ['banana', 'kiwi', 'apple', 'fig']
