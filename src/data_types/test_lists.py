@@ -336,3 +336,43 @@ def test_nested_list_comprehensions():
         (3, 7, 11),
         (4, 8, 12),
     ]
+def test_sorting_with_key():
+    """Sorting lists with sorted() and a key function.
+
+    sorted() returns a new sorted list and leaves the original list unchanged. The key argument
+    lets us choose what to sort by, and reverse=True sorts in descending order.
+    """
+
+    words = ['banana', 'kiwi', 'apple', 'fig']
+
+    # Default sorting is alphabetical.
+    assert sorted(words) == ['apple', 'banana', 'fig', 'kiwi']
+
+    # Sort by word length instead.
+    assert sorted(words, key=len) == ['fig', 'kiwi', 'apple', 'banana']
+
+    # Sort by word length, longest first.
+    assert sorted(words, key=len, reverse=True) == ['banana', 'apple', 'kiwi', 'fig']
+
+    # The original list was not modified.
+    assert words == ['banana', 'kiwi', 'apple', 'fig']
+
+def test_list_slicing_with_step():
+    """Slicing lists with a step.
+
+    A slice has the form list[start:stop:step]. The step lets us skip items or go backwards.
+    """
+
+    numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    # Every second item.
+    assert numbers[::2] == [0, 2, 4, 6, 8]
+
+    # Every second item, starting from index 1.
+    assert numbers[1::2] == [1, 3, 5, 7, 9]
+
+    # A start, a stop and a step together.
+    assert numbers[2:8:3] == [2, 5]
+
+    # A negative step reverses the list (returning a new list).
+    assert numbers[::-1] == [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
